@@ -1,7 +1,5 @@
 package com.demineur;
 
-import java.util.Scanner;
-
 public class Demineur {
 
 	// Aire de jeu
@@ -56,10 +54,10 @@ public class Demineur {
 		int nbBombes = 0;
 		// recherche des 8 voisins
 		for (int x = (posX - 1); x <= (posX + 1); x++) {
-			for (int y = (posY - 1); x <= (posY + 1); x++) {
+			for (int y = (posY - 1); y <= (posY + 1); y++) {
 				if ((x >= 0) && (x < nbColonne) && (y >= 0) && (y < nbLigne)) {
 					if (!((x == posX) && (y == posY))) {
-						if (aireDeJeu[x][y] == valMine) {
+						if (estMine(x, y)) {
 							nbBombes++;
 						}
 					}
@@ -73,14 +71,24 @@ public class Demineur {
 	 * Affiche l'aire de jeu
 	 */
 	public void draw() {
-		System.out.println();
-		for (int raw = 0; raw < nbLigne; raw++) {
-			System.out.print(" ");
-			for (int col = 0; col < nbColonne; col++) {
-				System.out.print(" " + aireDeJeu[raw][col] + " ");
-			}
-			System.out.println(" \n");
+		System.out.print("  ");
+		for (int i = 0; i < nbColonne; i++) {
+			System.out.print(i + "|");
 		}
+		System.out.println();
+		for (int i = 0; i < (nbColonne * 2) + 3; i++) {
+			System.out.print("-");
+		}
+		System.out.println();
+		for (int j = 0; j < nbColonne; j++) {
+			System.out.println(j + "|");
+		}
+		/*
+		 * System.out.println(); for (int raw = 0; raw < nbLigne; raw++) {
+		 * System.out.print(" "); for (int col = 0; col < nbColonne; col++) {
+		 * System.out.print(" " + aireDeJeu[raw][col] + " "); }
+		 * System.out.println(" \n"); }
+		 */
 	}
 
 	/**
@@ -102,11 +110,11 @@ public class Demineur {
 		Demineur demineur = new Demineur(5, 6);
 		demineur.minage(5);
 		demineur.draw();
-		Scanner sc = new Scanner(System.in);
-		System.out.print("posX:");
-		int posX = Integer.parseInt(sc.next());
-		System.out.print("posY:");
-		int posY = Integer.parseInt(sc.next());
-		System.out.println("nbBombesAdjacentes : " + demineur.nbBombesAdjacentes(posX, posY));
+		/*
+		 * Scanner sc = new Scanner(System.in); System.out.print("posX:"); int posX =
+		 * Integer.parseInt(sc.next()); System.out.print("posY:"); int posY =
+		 * Integer.parseInt(sc.next()); System.out.println("nbBombesAdjacentes : " +
+		 * demineur.nbBombesAdjacentes(posX, posY));
+		 */
 	}
 }
