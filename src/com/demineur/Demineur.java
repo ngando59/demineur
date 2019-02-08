@@ -71,11 +71,8 @@ public class Demineur {
 	 * Affiche l'aire de jeu
 	 */
 	public void draw() {
-		System.out.print("  ");
-		for (int i = 0; i < nbColonne; i++) {
-			System.out.print(i + "|");
-		}
-		System.out.println();
+
+
 		for (int i = 0; i < (nbColonne * 2) + 3; i++) {
 			System.out.print("-");
 		}
@@ -83,6 +80,25 @@ public class Demineur {
 		for (int j = 0; j < nbColonne; j++) {
 			System.out.println(j + "|");
 		}
+
+		System.out.print("    ");
+		for (int i = 0; i < nbColonne; i++) {
+			System.out.print(i+"   ");
+		}
+		System.out.println();
+
+		    for (int ligne=0 ; ligne<8 ; ligne++) {
+		        printf("   --- --- --- --- --- --- --- ---\n");
+		        printf("%d |", 8-ligne);
+		        for (int colonne=0 ; colonne<8 ; colonne++) {
+		            afficher_case( echiquier_lire(e, ligne, colonne) );
+		            printf("|"););
+		        }
+		        printf("\n");
+		    }
+		    printf("   --- --- --- --- --- --- --- ---\n");
+
+
 		/*
 		 * System.out.println(); for (int raw = 0; raw < nbLigne; raw++) {
 		 * System.out.print(" "); for (int col = 0; col < nbColonne; col++) {
